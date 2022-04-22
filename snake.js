@@ -24,8 +24,8 @@ function Snake(initx, inity, sizeSnake, speed) {
     this.y += this.yspeed * sizeSnake;
     
     // Limit the movement of the snake to the window
-    this.x = constrain(this.x, 0, width);
-    this.y = constrain(this.y, 0, height);
+    this.x = constrain(this.x, -1, width);
+    this.y = constrain(this.y, -1, height);
   }
   
   // Displays the snake in the
@@ -56,7 +56,7 @@ function Snake(initx, inity, sizeSnake, speed) {
   // Checks if the snake is dead
   this.isDead = function() {
     // Check if the snake is at the border
-    if (this.x === width || this.y === height) {
+    if (this.x + sizeSnake > width || this.x < 0 || this.y + sizeSnake > height || this.y < 0) {
       return true;
     }
     // Iterate through the tail and check if any tail block has clashed with the head
